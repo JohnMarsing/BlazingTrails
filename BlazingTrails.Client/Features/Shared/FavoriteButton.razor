@@ -1,0 +1,20 @@
+﻿@inject AppState AppState
+
+@if (AppState.FavoriteTrailsState.IsFavorite(Trail))
+{
+	<button @onclick="@(() => AppState.FavoriteTrailsState.RemoveFavorite(Trail))"
+		class="btn btn-outline-primary ml-1" title="Favorite">
+		<i class="bi bi-heart-fill"></i>
+	</button>
+}
+else
+{
+	<button @onclick="@(() => AppState.FavoriteTrailsState.AddFavorite(Trail))"
+		class="btn btn-outline-primary ml-1" title="Favorite">
+		<i class="bi bi-heart"></i>
+	</button>
+}
+
+@code {
+	[Parameter, EditorRequired] public Trail Trail { get; set; } = default!;
+}
